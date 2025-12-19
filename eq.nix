@@ -17,6 +17,7 @@
       })
       {}
     )
+    httrack
     git
     lynx
     lsof
