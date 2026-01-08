@@ -8,6 +8,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv4.conf.all.forwarding" = 1;
+  };
 
   environment.systemPackages = with pkgs; [
     (pkgs.callPackage
@@ -37,7 +41,22 @@
 
   networking.hostName = "eq";
   networking.domain = "l3x.in";
-  networking.firewall.allowedTCPPorts = [ 80 ];
+
+  # networking.wireguard.interfaces = {
+  #   wg0 = {
+  #     ips = [ "10.34.56.100/32" ];
+
+  #     privateKeyFile = "/root/private.key";
+
+  #     peers = [
+  #       {
+  #         publicKey = "WBm0QisTf9O1vhWMF0NoANtl/eR4voYQRBNnSQ+ulUI=";
+  #         allowedIPs = [ "10.34.56.1/32" ];
+  #         endpoint = "ovh01.l3x.in:51820";
+  #       }
+  #     ];
+  #   };
+  # };
 
   services.openssh.enable = true;
   services.ntp.enable = true;
