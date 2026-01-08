@@ -43,7 +43,7 @@
   networking.domain = "l3x.in";
 
   networking.wireguard.interfaces = {
-    wg1 = {
+    wg0 = {
       ips = [ "10.34.56.100/32" ];
 
       privateKeyFile = "/root/private.key";
